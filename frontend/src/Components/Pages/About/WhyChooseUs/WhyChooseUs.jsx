@@ -1,6 +1,6 @@
 import React from "react";
 import natural from "../../../../assets/Images/natural.jpg";
-import moringa from "../../../../assets/Images/Karuppu.png";
+import moringa from "../../../../assets/Images/karuppu.png";
 import first from "../../../../assets/Images/first.jpg";
 import second from "../../../../assets/Images/second.jpg";
 import third from "../../../../assets/Images/third.jpg";
