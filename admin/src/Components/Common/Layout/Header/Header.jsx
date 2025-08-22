@@ -1,11 +1,11 @@
 import React,{Fragment,useState} from "react";
-import logo from "../../../../Assets/Images/logo.png";
+import logo from "../../../../assets/Images/logo.png";
 import "./Header.css";
 import { Link,useLocation  } from "react-router-dom";
 import toast from "react-hot-toast";
 import client from "../../Client/Client";
 import Sidebar from "../Sidebar/Siderbar";
-import admin from "../../../../Assets/Images/profile-img.jpg"
+import admin from "../../../../assets/Images/profile-img.jpg"
 
 const Header = (props) => {
   const [username, setUsername] = React.useState("");
