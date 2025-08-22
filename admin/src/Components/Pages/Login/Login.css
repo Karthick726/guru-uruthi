@@ -1,7 +1,7 @@
 .full-height-background {
   position: relative;
   background: linear-gradient(#0000004d, #0000004d),
-    url(../../../Assets/Images/bg-imgae-login.avif);
+    url(../../../assets/Images/bg-imgae-login.avif);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
