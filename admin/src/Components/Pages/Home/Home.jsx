@@ -13,7 +13,7 @@ import {
   Typography,
 } from "@mui/material";
 import Grid from "@mui/material/Grid";
-import bookings from "../../../Assets/Images/bg-imgae-login.avif";
+import bookings from "../../../assets/Images/bg-imgae-login.avif";
 
 
 const Home = () => {
