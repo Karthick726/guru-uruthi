@@ -118,7 +118,7 @@ navigate("/bulk-orders")
               <h4>Address Location</h4>
               <p>
                 <i className="bi bi-geo-alt-fill" />
-                <span>{userContact[0]?.address}</span>
+                <a href="https://maps.app.goo.gl/tuuYwRX1WzeNFUez7" target="_blank" className="likes">{userContact[0]?.address}</a>
               </p>
               <h4>Phone Number</h4>
               <p>

@@ -164,7 +164,15 @@ footer{
     transform: rotate(-45deg);
     transition: all 0.4s ease-in-out;
 }
+.likes{
+    color: rgb(136, 140, 151);
+    text-transform: none;
+    text-decoration: none;
+}
 
+.likes:hover{
+    color: #008000;
+}
 .linksOne>a, .linksTwo>a{
     position: relative;
     color: white !important;
