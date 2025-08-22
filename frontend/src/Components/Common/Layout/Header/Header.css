@@ -391,3 +391,67 @@ li > a:hover {
     }
   }
   
+
+
+
+  /* Wrapper for product dropdown */
+.product-dropdown {
+  position: relative;
+  list-style: none;
+  font-family: Arial, sans-serif;
+}
+
+/* Main header link */
+.product-link {
+  padding: 12px 18px;
+  display: block;
+  cursor: pointer;
+  font-weight: 600;
+  color: #333;
+  transition: color 0.3s ease;
+}
+
+.product-link:hover {
+  color: #007bff; /* blue on hover */
+}
+
+/* Dropdown menu */
+.product-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  min-width: 200px;
+  background: #ffffff;
+  border-radius: 8px;
+  border: 1px solid #e5e5e5;
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.1);
+  display: none;
+  flex-direction: column;
+  padding: 8px 0;
+  z-index: 1000;
+}
+
+/* Each dropdown item */
+.product-dropdown-menu li {
+  list-style: none;
+}
+
+/* Links inside dropdown */
+.product-dropdown-link {
+  padding: 10px 16px;
+  display: block;
+  text-decoration: none;
+  color: #444;
+  transition: all 0.3s ease;
+}
+
+.product-dropdown-link:hover {
+  background: #f8f9fa;
+  color: #007bff;
+  padding-left: 20px; /* small slide effect */
+}
+
+/* Show dropdown on hover */
+.product-dropdown:hover .product-dropdown-menu {
+  display: flex;
+}

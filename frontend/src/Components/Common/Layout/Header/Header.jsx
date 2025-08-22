@@ -9,13 +9,14 @@ import Icons from "../../Icons/Icons";
 import { AppContext } from "../../../Hooks/Context/AppContext";
 import { NavLink } from "react-router-dom";
 import { IoReorderThree } from "react-icons/io5";
+import {  FaTwitter, FaYoutube } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { userContact } = useContext(AppContext);
-
+  console.log("userContact",userContact)
   useEffect(() => {
     const handleScroll = () => {
       const scrollTop = window.scrollY;
@@ -36,25 +37,39 @@ const Header = () => {
           <div className="container con">
             <div className="header-top">
               <div className="social-media-icons">
-                <a href="https://facebook.com" target="_blank" rel="noreferrer">
+                <a href="https://www.facebook.com/guruvalueproduct" target="_blank" rel="noreferrer">
                   <FaFacebookF />
                 </a>
                 <a
-                  href="https://instagram.com"
+                  href="https://www.instagram.com/guruvalueproducts/"
                   target="_blank"
                   rel="noreferrer"
                 >
                   <FaInstagram />
                 </a>
-                <a href="mailto:info@example.com">
-                  <MdEmail />
-                </a>
+                  <a
+        href="https://x.com/GuruValuProdct"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <FaTwitter />
+      </a>
+
+      <a
+        href="https://www.youtube.com/@GURUVALUEPRODUCTS"
+        target="_blank"
+        rel="noreferrer"
+      >
+        <FaYoutube />
+      </a>
               </div>
 
-              <div className="contact-media-icons">
-                <FiPhoneCall />
-                <span>(+91) 98765 43210</span>
-              </div>
+         <div className="contact-media-icons" style={{ cursor: "pointer" }}>
+  <FiPhoneCall />
+  <a href={`tel:${userContact[0]?.phoneIndia}`} style={{ marginLeft: "5px", textDecoration: "none", color: "inherit" }}>
+    (+91) {userContact[0]?.phoneIndia}
+  </a>
+</div>
             </div>
           </div>
 

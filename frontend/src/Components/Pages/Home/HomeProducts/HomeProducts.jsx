@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import "./HomeProducts.css";
 import service from "../../../../assets/Images/packages-images.png";
 import benefitsIcon from "../../../../assets/Images/benefits.svg"; // ✅ renamed
 import Slider from "react-slick";
 import { IoIosArrowBack, IoIosArrowForward } from "react-icons/io";
 import { useNavigate } from "react-router-dom";
+import client from "../../../Common/Client/Client";
 
 const NextArrow = ({ onClick }) => (
   <div className="carousel-arrow arrow-btn next" onClick={onClick}>
@@ -35,49 +36,47 @@ var settings = {
 };
 
 const HomeProducts = () => {
-  const navigate=useNavigate()
-  const productData = [
-    {
-      productName: "Moringa Mittai",
-      description:
-        'The "Miracle Tree" transformed into a delicious traditional sweet. Packed with 90+ nutrients, 46 antioxidants, and 18 amino acids. Perfect for daily nutrition and energy boost.',
-      image: service,
-      benefits: [
-        "7x more Vitamin C than oranges",
-        "Rich in antioxidants",
-        "Boosts immunity",
-        "7x more Vitamin C than oranges",
-        "Rich in antioxidants",
-        "Boosts immunity",
-      ],
-    },
-    {
-      productName: "Moringa Powder",
-      description:
-        "A superfood powder rich in vitamins, minerals, and essential amino acids. Perfect addition to smoothies, juices, and meals for daily health.",
-      image: service,
-      benefits: [
-        "Improves digestion",
-        "Supports healthy skin",
-        "Enhances energy levels",
-        "7x more Vitamin C than oranges",
-        "Rich in antioxidants",
-        "Boosts immunity",
-      ],
-    },
-  ];
+  const navigate = useNavigate();
+  const [products, setProducts] = useState([]);
+
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  const getProducts = async () => {
+    try {
+      const response = await client.get("/products/get-products", {
+        withCredentials: true,
+      });
+      if (response.status === 200) {
+        setProducts(response.data);
+      }
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
 
   return (
     <div className="product-carousel">
       <div className="container con">
         <div className="process-header">
-          <h2 className="main-title" style={{
-            color:"white"
-          }}>Our Signature Products</h2>
+          <h2
+            className="main-title"
+            style={{
+              color: "white",
+            }}
+          >
+            Our Signature Products
+          </h2>
           <div className="heading-divider"></div>
-          <p className="sub-text" style={{
-            color:"white"
-          }}>
+          <p
+            className="sub-text"
+            style={{
+              color: "white",
+            }}
+          >
             Handcrafted with care, blending age-old recipes and wholesome
             ingredients. Discover sweets that are as nutritious as they are
             delicious
@@ -85,61 +84,69 @@ const HomeProducts = () => {
         </div>
 
         <Slider {...settings}>
-          {productData.map((product, index) => (            <div className="product-card">
-      <div className="product-content">
-        <span className="product-subtitle">GURU URUTHI, REAL BENEFITS</span>
-        <h2 className="product-title">{product.productName}</h2>
-        <p className="product-desc">{product.description}</p>
+          {products.map((product, index) => (
+            <div className="product-card">
+              <div className="product-content">
+                <span className="product-subtitle">
+                  GURU URUTHI, REAL BENEFITS
+                </span>
+                <h2 className="product-title">{product.name}</h2>
+                <p className="product-desc">
+                  {product.description.slice(0, 200)}...
+                </p>
 
-          
+                <button
+                  className="shop-btn"
+                  onClick={() => {
+                    navigate("/products");
+                  }}
+                >
+                  SHOP NOW <span>→</span>
+                </button>
+              </div>
 
-        <button className="shop-btn" onClick={()=>{
-                  navigate("/contact")
-        }}>
-          SHOP NOW <span>→</span>
-        </button>
-      </div>
-
-      <div className="product-image">
-        <img src={product.image} alt={product.productName} />
-      </div>
-      <div style={{
-        display:"flex",
-        flexDirection:"column",
-        gap:"10px"
-      }}>
- <h2>Key Hightlights</h2>
-              <ul>
-                 {product.benefits.slice(0,5).map((benefit, i) => (
-                  <li key={i}>
-                    <img src={benefitsIcon} alt="benefit icon" />
-                    {benefit}
-                  </li>
-                ))}
-              </ul>
+              <div className="product-image">
+                <img src={product.image} alt={product.name} />
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  gap: "10px",
+                }}
+              >
+                <h2>Key Hightlights</h2>
+                <ul>
+                  {product.benefits.slice(0, 5).map((benefit, i) => (
+                    <li key={i}>
+                      <img src={benefitsIcon} alt="benefit icon" />
+                      {benefit}
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
-    </div>           
-    
-//     <div className="product-card" key={index}>
-//               <div>
-//   <h3>{product.productName}</h3>
-//               <p>{product.description}</p>
-//               </div>
-//               <img src={product.image} alt={product.productName} />
-              
-//             <div>
-//  <h2>Key Hightlights</h2>
-//               <ul>
-//                 {product.benefits.map((benefit, i) => (
-//                   <li key={i}>
-//                     <img src={benefitsIcon} alt="benefit icon" />
-//                     {benefit}
-//                   </li>
-//                 ))}
-//               </ul>
-//             </div>
-             
-//             </div>
+
+            //     <div className="product-card" key={index}>
+            //               <div>
+            //   <h3>{product.productName}</h3>
+            //               <p>{product.description}</p>
+            //               </div>
+            //               <img src={product.image} alt={product.productName} />
+
+            //             <div>
+            //  <h2>Key Hightlights</h2>
+            //               <ul>
+            //                 {product.benefits.map((benefit, i) => (
+            //                   <li key={i}>
+            //                     <img src={benefitsIcon} alt="benefit icon" />
+            //                     {benefit}
+            //                   </li>
+            //                 ))}
+            //               </ul>
+            //             </div>
+
+            //             </div>
           ))}
         </Slider>
       </div>
@@ -147,4 +154,4 @@ const HomeProducts = () => {
   );
 };
 
-export default HomeProducts
+export default HomeProducts;

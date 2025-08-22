@@ -10,6 +10,8 @@ const loginRoute = require("./Route/loginRoute");
 const adminadded = require("./Route/AdminContactRouter");
 const logoutRoute = require("./Route/logoutRoute");
 const userRoute = require("./Route/userContactRoute");
+const productsRoute = require("./Route/productsRoute");
+const reviewRoute = require("./Route/reviewRoute");
 
 
 app.use(cookieParser());
@@ -36,6 +38,8 @@ app.use("/admin", loginRoute);
 app.use("/contact", adminadded);
 app.use("/admins", logoutRoute);
 app.use("/usercontact", userRoute);
+app.use("/products", productsRoute);
+app.use("/review", reviewRoute);
 
 
 

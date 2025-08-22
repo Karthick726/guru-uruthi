@@ -10,17 +10,13 @@ import step2 from "../../../../assets/Images/cho.jpg";
 import packing from "../../../../assets/Images/packing.jpg";
 import powder from "../../../../assets/Images/powder.jpg";
 import { motion } from "framer-motion";
-// import { AppContext } from "../../Context/AppContext";
+import { AppContext } from "../../../Hooks/Context/AppContext";
 import client from "../../../Common/Client/Client";
 
 const ContactRef = () => {
-  // const { travel } = useContext(AppContext);
+  const { userContact } = useContext(AppContext);
 
-  const travel=[{
-    email:"lingamkarthick89@gmail.com",
-    address:"madurai",
-    phoneIndia:"7339019587"
-  }]
+ 
   const [loading, setLoading] = useState(false);
   const [contact, setContact] = useState({
     name: "",
@@ -204,7 +200,7 @@ const ContactRef = () => {
                   </div>
                   <div className="contact-info-content">
                     <h5>Office Address</h5>
-                    <p>{travel[0]?.address}</p>
+                    <p>{userContact[0]?.address}</p>
                   </div>
                 </div>
               </motion.div>
@@ -223,7 +219,14 @@ const ContactRef = () => {
                   </div>
                   <div className="contact-info-content">
                     <h5>Call Us</h5>
-                    <p>{travel[0]?.phoneIndia}</p>
+  <p>
+  <a 
+    href={`tel:${userContact[0]?.phoneIndia}`} 
+    style={{ textDecoration: "none", color: "inherit" }}
+  >
+    {userContact[0]?.phoneIndia}
+  </a>
+</p>
                 
                   </div>
                 </div>
@@ -243,7 +246,16 @@ const ContactRef = () => {
                   </div>
                   <div className="contact-info-content">
                     <h5>Email Us</h5>
-                    <p>{travel[0]?.email}</p>
+                   <p style={{
+                    cursor:"pointer"
+                   }}>
+  <a 
+    href={`mailto:${userContact[0]?.email}`} 
+    style={{ textDecoration: "none", color: "inherit" }}
+  >
+    {userContact[0]?.email}
+  </a>
+</p>
                   </div>
                 </div>
               </motion.div>

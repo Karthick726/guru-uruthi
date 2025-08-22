@@ -1,0 +1,54 @@
+.image-table {
+  width: 100%;
+  max-width: 200px;
+  aspect-ratio: 1 / 1;
+  height: auto;
+}
+
+td{
+    vertical-align: middle;
+}
+
+/* Optional: Add responsiveness for smaller screens */
+@media (max-width: 768px) {
+  .image-table {
+    max-width: 150px;
+  }
+}
+
+@media (max-width: 480px) {
+  .image-table {
+    max-width: 120px;
+  }
+}
+
+
+.icon {
+  font-size: 20px;
+  margin: 0px auto;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.edit-icon {
+  width: 35px;
+  height: 35px;
+  background-color: green;
+  color: white;
+}
+
+.delete-icon {
+     width: 35px;
+  height: 35px;
+    background-color: red;
+    color: white;
+    margin-left: 10px;
+}
+
+
+td, th {
+  vertical-align: middle !important;
+}

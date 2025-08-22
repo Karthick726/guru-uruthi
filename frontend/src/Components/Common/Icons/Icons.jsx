@@ -7,7 +7,7 @@ import { FaWhatsapp } from "react-icons/fa";
 const Icons = () => {
   const [contact, setContact] = useState({
     whatsapp: "",
-    email: "",
+    phone:""
   });
   useEffect(() => {
     fecthContact();
@@ -21,9 +21,8 @@ const Icons = () => {
         setContact((pre) => {
           return {
             ...pre,
-            email: data.email,
-
-            whatsapp: data.phone,
+            phone:data.phoneIndia,
+            whatsapp: data.phoneIndia,
           };
         });
       }
@@ -37,7 +36,7 @@ const Icons = () => {
         <Link
           to=""
           onClick={() => {
-            window.location.href = `tel: ${contact.phoneIndia}`;
+            window.location.href = `tel: ${contact.phone}`;
           }}
           class="btn-phone-pulse btn-phone-pulse-border"
           title="Call Now"

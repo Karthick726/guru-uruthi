@@ -7,12 +7,12 @@ const HeaderAllow = (props) => {
   const location = useLocation();
   const headerPaths = [
     "/",
-    "/service",
-    "/business",
+    "/products",
     "/manage/contact",
     "/manage/user-contact",
-    "/manage/service",
-    "/manage/business"
+    "/manage/products",
+    "/review",
+    "/manage/review"
   ];
   return (
     <>

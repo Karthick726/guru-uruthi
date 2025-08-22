@@ -1,7 +1,31 @@
-import React from "react";
+import React, { useContext, useEffect, useState } from "react";
 import "./Footer.css";
 import logo from "../../../../assets/Images/logo.png";
+import client from "../../Client/Client";
+import { AppContext } from "../../../Hooks/Context/AppContext";
+
+
 const Footer = () => {
+
+   const [products, setProducts] = useState([]);
+    const { userContact } = useContext(AppContext);
+  
+    useEffect(() => {
+      getProducts();
+    }, []);
+  
+    const getProducts = async () => {
+      try {
+        const response = await client.get("/products/get-products", {
+          withCredentials: true,
+        });
+        if (response.status === 200) {
+          setProducts(response.data?.map((value)=> value.name));
+        }
+      } catch (err) {
+        console.log(err);
+      }
+    };
   return (
     <footer>
       <div className="container con">
@@ -17,54 +41,62 @@ const Footer = () => {
               natural ingredients, and the promise of wellness.
             </p>
             <div className="social">
-              <a href="#">
+              <a href="https://www.facebook.com/guruvalueproduct" target="_blank">
                 <i className="bi bi-facebook" />
               </a>
            
-              <a href="#">
+              <a href="https://www.instagram.com/guruvalueproducts/" target="_blank">
                 <i className="bi bi-instagram" />
               </a>
-              <a href="#">
-                <i className="bi bi-linkedin" />
-              </a>
+           <a href="https://x.com/GuruValuProdct" target="_blank" rel="noreferrer">
+  <i className="bi bi-twitter" />
+</a>
+
+<a href="https://www.youtube.com/@GURUVALUEPRODUCTS" target="_blank" rel="noreferrer">
+  <i className="bi bi-youtube" />
+</a>
             </div>
           </div>
           <div className="footerCard">
             <h3 className="footerHead">Useful Links</h3>
             <div className="linksOne">
-              <a href>
+              <a href="/about">
                 <i className="bi bi-arrow-right-short" />
                 About Us
               </a>
-              <a href>
+              <a href="/products">
                 <i className="bi bi-arrow-right-short" />
                 Products
               </a>
-              <a href>
+              <a href="/healty-benefits">
                 <i className="bi bi-arrow-right-short" />
                 Health Benefits
               </a>
-              <a href>
+              <a href="/testimonial">
                 <i className="bi bi-arrow-right-short" />
                 Testimonial
               </a>
-              <a href>
+              <a href="/contact">
                 <i className="bi bi-arrow-right-short" />
                 Contact
               </a>
             </div>
           </div>
           <div className="footerCard">
-            <h3 className="footerHead">UseFul Links</h3>
+            <h3 className="footerHead">Our Products</h3>
             <div className="linksTwo">
-              <a href>
+              {
+                products.map((value)=>{
+                  return <>
+                     <a href="/products">
                 <i className="bi bi-arrow-right-short" />
-                Term & condition
+                 {value}
               </a>
-              <a href>
-                <i className="bi bi-arrow-right-short" />
-               Privacy policy
-              </a>
+                  </>
+                })
+              }
+           
+             
             
             </div>
           </div>
@@ -74,17 +106,17 @@ const Footer = () => {
               <h4>Address Location</h4>
               <p>
                 <i className="bi bi-geo-alt-fill" />
-                <span>Orlando City, USA</span>
+                <span>{userContact[0]?.address}</span>
               </p>
               <h4>Phone Number</h4>
               <p>
                 <i className="bi bi-telephone-fill" />
-                <span>+1 952-435-7106</span>
+                <span>{userContact[0]?.phoneIndia}</span>
               </p>
               <h4>Email address</h4>
               <p>
                 <i className="bi bi-envelope-fill" />
-                <span>info@solak.com</span>
+                <span>{userContact[0]?.email}</span>
               </p>
             </div>
           </div>

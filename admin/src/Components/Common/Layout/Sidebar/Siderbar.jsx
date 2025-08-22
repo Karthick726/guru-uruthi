@@ -53,23 +53,23 @@ const Sidebar = ({ open, toggleSidebar, setAdmin }) => {
           <li className="nav-item">
             <Link
               className={`nav-link ${
-                isActive("/service") ? "active" : "collapsed"
+                isActive("/products") ? "active" : "collapsed"
               }`}
-              to="/service"
+              to="/products"
             >
             <i class="bi bi-box-seam"></i>
-              <span>Service</span>
+              <span>Products</span>
             </Link>
           </li>
           <li className="nav-item">
             <Link
               className={`nav-link ${
-                isActive("/business") ? "active" : "collapsed"
+                isActive("/review") ? "active" : "collapsed"
               }`}
-              to="/business"
+              to="/review"
             >
-         <i class="bi bi-layout-text-window"></i>
-              <span>Business</span>
+     <i class="bi bi-star-fill"></i>
+              <span>Review</span>
             </Link>
           </li>
 
@@ -80,28 +80,28 @@ const Sidebar = ({ open, toggleSidebar, setAdmin }) => {
           <li className="nav-item">
             <Link
               className={`nav-link ${
-                isActive("/manage/service") ? "active" : "collapsed"
+                isActive("/manage/products") ? "active" : "collapsed"
               }`}
-              to="/manage/service"
+              to="/manage/products"
             >
              <i class="bi bi-box-seam"></i>
-              <span>Manage Service</span>
+              <span>Manage Products</span>
             </Link>
           </li>
 
           
-
-            <li className="nav-item">
+    <li className="nav-item">
             <Link
               className={`nav-link ${
-                isActive("/manage/business") ? "active" : "collapsed"
+                isActive("/manage/review") ? "active" : "collapsed"
               }`}
-              to="/manage/business"
+              to="/manage/review"
             >
-            <i class="bi bi-layout-text-window"></i>
-              <span>Manage Business</span>
+         <i class="bi bi-star-fill"></i>
+              <span>Manage Reviews</span>
             </Link>
           </li>
+         
 
           <li className="nav-item">
             <Link

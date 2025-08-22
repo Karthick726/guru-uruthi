@@ -1,0 +1,19 @@
+.card{
+    width: 100%;
+}
+
+td,th{
+    text-align: center;
+}
+
+.card-item{
+    display: flex;
+    gap:30px;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    margin-bottom: 20px;
+}
+
+.card-item > .MuiBox-root{
+    width: 300px;
+}

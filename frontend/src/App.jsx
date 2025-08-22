@@ -5,7 +5,6 @@ import Spinner from "./Components/Common/spinner/Spinner";
 import ScrollTop from "./Components/Common/ScrollTop/ScrollTop";
 import Home from "./Components/Pages/Home/Home";
 import About from "./Components/Pages/About/About";
-import "./App.css";
 import { AppProvider } from "./Components/Hooks/Context/AppContext";
 import ScrollBar from "./Components/Common/ScrollBar/ScrollBar";
 import NotFound from "./Components/Common/NotFound/NotFound";
@@ -13,6 +12,9 @@ import Contact from "./Components/Pages/Contact/Contact";
 import Testimonial from "./Components/Pages/Testimonial/Testimonial";
 import HealthBenefits from "./Components/Pages/HealthBenefits/HealthBenefits";
 import Products from "./Components/Pages/Products/Products";
+// const Home = React.lazy(() => import("./Components/Pages/Home/Home"));
+
+
 
 function App() {
   return (

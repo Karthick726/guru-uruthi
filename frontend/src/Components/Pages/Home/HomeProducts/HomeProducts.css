@@ -37,7 +37,7 @@
 
 .product-card {
   display: flex !important;
-  width: 80% !important;
+  width: 100% !important;
   align-items: center;
   justify-content: space-between;
   background: #f3faf3;
@@ -45,7 +45,6 @@
   padding: 50px;
   margin: 20px auto;
   gap: 40px;
-  flex-wrap: wrap;
 }
 
 .product-content {
@@ -174,6 +173,7 @@
   .product-card {
     border-radius: 50px;
     justify-content: center;
+    flex-wrap: wrap;
   }
 }
 
