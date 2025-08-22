@@ -49,7 +49,7 @@ const Footer = () => {
                 <i className="bi bi-instagram" />
               </a>
            <a href="https://x.com/GuruValuProdct" target="_blank" rel="noreferrer">
-  <i className="bi bi-twitter" />
+<i className="bi bi-twitter-x"></i>
 </a>
 
 <a href="https://www.youtube.com/@GURUVALUEPRODUCTS" target="_blank" rel="noreferrer">

@@ -11,6 +11,7 @@ import { NavLink } from "react-router-dom";
 import { IoReorderThree } from "react-icons/io5";
 import {  FaTwitter, FaYoutube } from "react-icons/fa";
 import { IoClose } from "react-icons/io5";
+import { FaXTwitter } from "react-icons/fa6";
 
 const Header = () => {
   const [isSticky, setIsSticky] = useState(false);
@@ -52,7 +53,7 @@ const Header = () => {
         target="_blank"
         rel="noreferrer"
       >
-        <FaTwitter />
+        <FaXTwitter />
       </a>
 
       <a
