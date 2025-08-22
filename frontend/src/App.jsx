@@ -12,6 +12,7 @@ import Contact from "./Components/Pages/Contact/Contact";
 import Testimonial from "./Components/Pages/Testimonial/Testimonial";
 import HealthBenefits from "./Components/Pages/HealthBenefits/HealthBenefits";
 import Products from "./Components/Pages/Products/Products";
+import LandingPage from "./Components/Pages/LandingPage/LandingPage";
 // const Home = React.lazy(() => import("./Components/Pages/Home/Home"));
 
 
@@ -48,6 +49,7 @@ function App() {
             <Route path="/healty-benefits" element={<HealthBenefits />} />
             <Route path="/testimonial" element={<Testimonial />} />
             <Route path="/contact" element={<Contact />} />
+            <Route path="/bulk-orders" element={<LandingPage />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

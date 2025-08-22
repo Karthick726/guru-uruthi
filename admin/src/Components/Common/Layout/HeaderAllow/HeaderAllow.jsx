@@ -12,7 +12,8 @@ const HeaderAllow = (props) => {
     "/manage/user-contact",
     "/manage/products",
     "/review",
-    "/manage/review"
+    "/manage/review",
+    "/manage/bulk-order"
   ];
   return (
     <>

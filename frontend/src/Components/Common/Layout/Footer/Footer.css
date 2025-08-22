@@ -270,3 +270,50 @@ footer{
         padding: 15px 0;
     }
 }
+
+
+.nbulkorder-btn {
+  background: linear-gradient(135deg, #008000, #008000);
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  padding: 18px 28px;
+  border: none;
+  border-radius: 50px;
+  margin-top: 20px;
+  cursor: pointer;
+  outline: none;
+  position: relative;
+  overflow: hidden;
+  animation: floatUpDown 2s infinite ease-in-out, pulse 2s infinite;
+  box-shadow: 0 6px 20px rgba(255, 60, 0, 0.4);
+}
+
+/* Hover */
+.nbulkorder-btn:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 25px #5ebb49;
+}
+
+/* Floating effect */
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* Pulse Glow effect */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 0 0 #5ebb49;
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(255, 60, 0, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(255, 60, 0, 0);
+  }
+}

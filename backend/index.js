@@ -12,6 +12,7 @@ const logoutRoute = require("./Route/logoutRoute");
 const userRoute = require("./Route/userContactRoute");
 const productsRoute = require("./Route/productsRoute");
 const reviewRoute = require("./Route/reviewRoute");
+const contactRoute = require("./Route/ContactRouter");
 
 
 app.use(cookieParser());
@@ -43,6 +44,7 @@ app.use("/admins", logoutRoute);
 app.use("/usercontact", userRoute);
 app.use("/products", productsRoute);
 app.use("/review", reviewRoute);
+app.use("/bulk-order", contactRoute);
 
 
 

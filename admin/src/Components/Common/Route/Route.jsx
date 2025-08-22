@@ -1,4 +1,5 @@
 import Home from "../../Pages/Home/Home";
+import BulkContact from "../../Pages/Manage/BulkContact/BulkContact";
 import Contact from "../../Pages/Manage/Contact/Contact";
 import ManageReview from "../../Pages/Manage/ManageReview/ManageReview";
 import ManageService from "../../Pages/Manage/Services/ManageService";
@@ -16,6 +17,7 @@ const route = [
   { path: "/review", element: <Review /> },
   { path: "/manage/user-contact", element: <UserContact /> },
   { path: "/manage/review", element: <ManageReview /> },
+  { path: "/manage/bulk-order", element: <BulkContact /> },
   { path: "*", element: <NotFound /> },
 ];
 

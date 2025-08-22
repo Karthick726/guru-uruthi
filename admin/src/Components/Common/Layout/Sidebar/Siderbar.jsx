@@ -101,6 +101,17 @@ const Sidebar = ({ open, toggleSidebar, setAdmin }) => {
               <span>Manage Reviews</span>
             </Link>
           </li>
+           <li className="nav-item">
+            <Link
+              className={`nav-link ${
+                isActive("/manage/bulk-order") ? "active" : "collapsed"
+              }`}
+              to="/manage/bulk-order"
+            >
+        <i class="bi bi-bag-fill"></i>
+              <span>Manage Bulk Order</span>
+            </Link>
+          </li>
          
 
           <li className="nav-item">

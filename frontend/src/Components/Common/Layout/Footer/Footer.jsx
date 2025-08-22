@@ -3,13 +3,14 @@ import "./Footer.css";
 import logo from "../../../../assets/Images/logo.png";
 import client from "../../Client/Client";
 import { AppContext } from "../../../Hooks/Context/AppContext";
+import { useNavigate } from "react-router-dom";
 
 
 const Footer = () => {
 
    const [products, setProducts] = useState([]);
     const { userContact } = useContext(AppContext);
-  
+    const navigate =useNavigate()
     useEffect(() => {
       getProducts();
     }, []);
@@ -80,13 +81,17 @@ const Footer = () => {
                 <i className="bi bi-arrow-right-short" />
                 Contact
               </a>
+                {/* <a href="/bulk-orders">
+                <i className="bi bi-arrow-right-short" />
+                Bulk-Order
+              </a> */}
             </div>
           </div>
           <div className="footerCard">
             <h3 className="footerHead">Our Products</h3>
             <div className="linksTwo">
               {
-                products.map((value)=>{
+                products.slice(0,4).map((value)=>{
                   return <>
                      <a href="/products">
                 <i className="bi bi-arrow-right-short" />
@@ -98,6 +103,13 @@ const Footer = () => {
            
              
             
+            </div>
+            <div>
+<button className="nbulkorder-btn" onClick={()=>{
+navigate("/bulk-orders")
+}}>
+   Bulk Order 🛒
+</button>
             </div>
           </div>
           <div className="footerCard">
