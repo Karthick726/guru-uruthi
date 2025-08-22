@@ -12,7 +12,7 @@ import { Fragment } from "react";
 import "./Login.css";
 import client from "../../Common/Client/Client";
 import { useNavigate } from "react-router-dom";
-import logo from '../../../Assets/Images/logo.png'
+import logo from '../../../assets/Images/logo.png'
 
 
 const Login = (porps) => {
