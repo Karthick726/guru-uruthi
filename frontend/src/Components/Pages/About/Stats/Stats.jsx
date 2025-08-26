@@ -10,7 +10,7 @@ import "./Stats.css";
 const Stats = () => {
   const statsData = [
     { image: natural, end: 100, suffix: "%", label: "Natural Ingredients" },
-    { image: customer, end: 500, suffix: "+", label: "Happy Customers" },
+    { image: customer, end: 10000, suffix: "+", label: "Happy Customers" },
     { image: year, end: 5, suffix: "+", label: "Years of Tradition" },
     { image: packages, end: "zero", suffix: "", label: "Artificial Preservatives" },
   ];
