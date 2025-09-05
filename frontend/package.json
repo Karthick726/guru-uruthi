@@ -10,7 +10,7 @@
     "build:server": "vite build --outDir dist/server --ssr src/entry-server.jsx",
     "preview": "vite preview",
     "serve": "node server.js",
-    "start": "npm run build && npm run serve"
+    "start": "node server.js"
   },
   "dependencies": {
     "antd": "^5.27.0",
