@@ -29,8 +29,7 @@ export default async function handler(req, res) {
           ${helmet.link.toString()}
         `);
       
-      res.status(200).set({ 'Content-Type': 'text/html' }).end(responseHtml);
-    res.status(200).send(html);
+      res.status(200).set({ 'Content-Type': 'text/html' }).send(responseHtml);
   } catch (err) {
     console.error("SSR Error:", err);
     res.status(500).send("Internal Server Error");
