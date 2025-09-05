@@ -7,7 +7,7 @@ export default defineConfig({
     ssr:true,
     rollupOptions: {
       input: {
-        client: './src/main.jsx',
+        main: './index.html',
         server: './src/entry-server.jsx'
       }
     }

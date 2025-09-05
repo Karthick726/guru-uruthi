@@ -7,7 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Load index.html template
 const templateHtml = fs.readFileSync(
-  path.resolve(__dirname, "../index.html"),
+  path.resolve(__dirname, "../dist/client/index.html"),
   "utf-8"
 );
 
@@ -32,6 +32,6 @@ export default async function handler(req, res) {
       res.status(200).set({ 'Content-Type': 'text/html' }).send(responseHtml);
   } catch (err) {
     console.error("SSR Error:", err);
-    res.status(500).send("Internal Server Error");
+    res.status(500).send(templateHtml);
   }
 }
