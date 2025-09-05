@@ -33,6 +33,16 @@ export default async function handler(req, res) {
       res.status(200).set({ 'Content-Type': 'text/html' }).send(responseHtml);
   } catch (err) {
     console.error("SSR Error:", err);
-    res.status(500).send(templateHtml).json({message:err});
-  }
+   const errorHtml = `<!DOCTYPE html>
+<html>
+  <head><title>Error</title></head>
+  <body>
+    <h1>Something went wrong</h1>
+    <p>Error: ${err.message}</p>
+  </body>
+</html>`;
+    
+    res.status(500).set({ 'Content-Type': 'text/html' }).send(errorHtml);
+}
+
 }
