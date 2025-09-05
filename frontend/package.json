@@ -4,13 +4,12 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "vite build",
+    "dev": "node server.js",
+      "build": "npm run build:client && npm run build:server",
     "build:client": "vite build --outDir dist/client",
     "build:server": "vite build --outDir dist/server --ssr src/entry-server.jsx",
     "preview": "vite preview",
-    "serve": "node server.js",
-    "start": "node server.js"
+    "vercel-build": "npm run build"
   },
   "dependencies": {
     "antd": "^5.27.0",
