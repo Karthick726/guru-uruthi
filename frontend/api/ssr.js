@@ -19,7 +19,7 @@ export default async function handler(req, res) {
     const url = req.url;
 
     // Render React app
-    const rendered = await render(url);
+    const {html, helmet} = await render(url);
 
   const responseHtml = templateHtml
         .replace('<!--ssr-outlet-->', html)
