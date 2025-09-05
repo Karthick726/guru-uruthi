@@ -137,5 +137,20 @@
   }
   .testimonial-card {
     min-height: auto;
+    margin: auto;
   }
 }
+
+
+/* @media (max-width:992px) {
+  .test>.slick-list>.slick-track>.slick-slide{
+  width: 442px !important;
+}
+
+.slick-cloned{
+  display: none !important;
+}
+} */
+
+
+

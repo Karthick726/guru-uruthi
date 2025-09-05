@@ -40,13 +40,16 @@ const HomeTestimonial = () => {
       {
         breakpoint: 768,
         settings: { slidesToShow: 1 }
+      },
+      {
+         breakpoint: 600,
+        settings: { slidesToShow: 1 }
       }
     ]
   };
 
 
   const [reviews, setReviews] = useState([]);
-
     useEffect(() => {
       getReviews();
     }, []);
@@ -64,6 +67,8 @@ const HomeTestimonial = () => {
       console.log(err);
     }
   };
+
+
   return (
     <div className="testimonials-section ">
         <div className="container con">
@@ -76,28 +81,32 @@ const HomeTestimonial = () => {
             </div>
 
 
-      <Slider {...settings}>
-        {reviews.map((item, index) => (
-          <div className="testimonial-card" key={index}>
-            <FaQuoteLeft className="quote-icon" />
-            <p className="testimonial-text">{item.review}</p>
-            <div className="testimonial-footer">
-              <img src={item.image} alt={item.name} className="testimonial-img" />
-              <div>
-                <h4 className="testimonial-name">{item.name}</h4>
-                <span className="testimonial-role">Customer</span>
-              </div>
-              <div className="testimonial-stars">
-                {Array(item.rating)
-                  .fill()
-                  .map((_, i) => (
-                    <FaStar key={i} color="#FFA500" />
-                  ))}
+ {reviews.length > 0 ? (
+        <Slider {...settings} className="test">
+          {reviews.map((item, index) => (
+            <div className="testimonial-card"  key={index}>
+              <FaQuoteLeft className="quote-icon" />
+              <p className="testimonial-text">{item.review}</p>
+              <div className="testimonial-footer">
+                <img src={item.image} alt={item.name} className="testimonial-img" />
+                <div>
+                  <h4 className="testimonial-name">{item.name}</h4>
+                  <span className="testimonial-role">Customer</span>
+                </div>
+                <div className="testimonial-stars">
+                  {Array(item.rating)
+                    .fill()
+                    .map((_, i) => (
+                      <FaStar key={i} color="#FFA500" />
+                    ))}
+                </div>
               </div>
             </div>
-          </div>
-        ))}
-      </Slider>
+          ))}
+        </Slider>
+      ) : (
+        <p style={{ textAlign: "center" }}>Loading reviews...</p>
+      )}
         </div>
     
     </div>

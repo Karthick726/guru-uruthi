@@ -8,10 +8,18 @@ import HomeCarsoual from "./HomeCarsoual/HomeCarsoual";
 import Footer from "../../Common/Layout/Footer/Footer";
 import WhyChooseUs from "../About/WhyChooseUs/WhyChooseUs";
 import HomeTestimonial from "./HomeTestimonial/HomeTestimonial";
+import SEO from "../../SEO";
 
 const Home = () => {
   return (
     <div>
+     <SEO
+        title="Home-Guru Uruthi"
+        description="Welcome to our homepage. Discover amazing products and services."
+        keywords="home, products, services, company"
+        url="/"
+     />
+
       <Header />
       <HomeCarsoual />
       <Stats />

@@ -19,7 +19,7 @@ import LandingPage from "./Components/Pages/LandingPage/LandingPage";
 
 function App() {
   return (
-    <div>
+    <div className="App">
       <AppProvider>
         <Toaster
           toastOptions={{

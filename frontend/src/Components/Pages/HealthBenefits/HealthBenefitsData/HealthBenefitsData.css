@@ -322,6 +322,9 @@
   .nutrition-heading {
     font-size: 2em;
   }
+   .products-card{
+   padding: 20px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -340,4 +343,16 @@
   .nutrition-heading {
     font-size: 1.8em;
   }
+  .products-card{
+   padding: 15px;
+  }
+
+  .products-card>ul{
+    padding:0px;
+  }
 }
+
+
+  .products-card>ul{
+    padding:0px;
+  }

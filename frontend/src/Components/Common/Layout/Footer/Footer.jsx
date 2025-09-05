@@ -3,7 +3,7 @@ import "./Footer.css";
 import logo from "../../../../assets/Images/logo.png";
 import client from "../../Client/Client";
 import { AppContext } from "../../../Hooks/Context/AppContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 const Footer = () => {
@@ -61,26 +61,26 @@ const Footer = () => {
           <div className="footerCard">
             <h3 className="footerHead">Useful Links</h3>
             <div className="linksOne">
-              <a href="/about">
+              <Link to="/about">
                 <i className="bi bi-arrow-right-short" />
                 About Us
-              </a>
-              <a href="/products">
+              </Link>
+              <Link to="/products">
                 <i className="bi bi-arrow-right-short" />
                 Products
-              </a>
-              <a href="/healty-benefits">
+              </Link>
+              <Link to="/healty-benefits">
                 <i className="bi bi-arrow-right-short" />
                 Health Benefits
-              </a>
-              <a href="/testimonial">
+              </Link>
+              <Link to="/testimonial">
                 <i className="bi bi-arrow-right-short" />
                 Testimonial
-              </a>
-              <a href="/contact">
+              </Link>
+              <Link to="/contact">
                 <i className="bi bi-arrow-right-short" />
                 Contact
-              </a>
+              </Link>
                 {/* <a href="/bulk-orders">
                 <i className="bi bi-arrow-right-short" />
                 Bulk-Order
@@ -93,10 +93,10 @@ const Footer = () => {
               {
                 products.slice(0,4).map((value)=>{
                   return <>
-                     <a href="/products">
+                     <Link to="/products">
                 <i className="bi bi-arrow-right-short" />
                  {value}
-              </a>
+              </Link>
                   </>
                 })
               }

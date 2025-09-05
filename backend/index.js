@@ -3,7 +3,7 @@ const mongoose = require("mongoose");
 const cors = require("cors");
 const cookieParser = require("cookie-parser");
 const bodyParser = require("body-parser");
-const path = require("path");
+const path =require("path")
 const app = express();
 
 app.use(express.static(path.join(__dirname, "public")));
@@ -17,12 +17,11 @@ const productsRoute = require("./Route/productsRoute");
 const reviewRoute = require("./Route/reviewRoute");
 const contactRoute = require("./Route/ContactRouter");
 
-
 app.use(cookieParser());
 app.use(express.json());
 const corsOptions = {
   origin: [
-    "http://localhost:5173",
+    "http://localhost:3000",
     "http://localhost:5174",
     "https://guru-uruthi-frontend.vercel.app",
     "https://guru-uruthi-admin.vercel.app"
@@ -48,9 +47,6 @@ app.use("/usercontact", userRoute);
 app.use("/products", productsRoute);
 app.use("/review", reviewRoute);
 app.use("/bulk-order", contactRoute);
-
-
-
 
 // MongoDB connection
 const mongo_url =

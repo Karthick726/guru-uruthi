@@ -8,10 +8,17 @@ import WhyChooseUs from "../About/WhyChooseUs/WhyChooseUs";
 import LandingProducts from "./LandingProducts/LandingProducts";
 import LandingAbout from "./LandingAbout/LandingAbout";
 import CustomPhoneInput from "./LandingAbout/CustomPhoneInput";
+import SEO from "../../SEO";
 
 const LandingPage = () => {
   return (
     <div>
+        <SEO
+        title="Bulk Orders - Guru Uruthi"
+        description="Order Guru Uruthi products in bulk at wholesale prices."
+        keywords="guru uruthi bulk orders, wholesale snacks, business orders"
+        url="/bulk-orders"
+      />
       <Header />
       <LandingCarsoual />
       <LandingAbout />
