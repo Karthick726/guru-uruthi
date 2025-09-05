@@ -32,7 +32,7 @@ export default async function handler(req, res) {
       
       res.status(200).set({ 'Content-Type': 'text/html' }).send(responseHtml);
   } catch (err) {
-    console.error("SSR Error:", err);
+    console.log("SSR Error:", err);
     res.status(500).send(templateHtml).json({message:err});
   }
 }
