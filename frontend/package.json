@@ -3,14 +3,14 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "scripts": {
-    "dev": "node server.js",
-      "build": "npm run build:client && npm run build:server",
-    "build:client": "vite build --outDir dist/client",
-    "build:server": "vite build --outDir dist/server --ssr src/entry-server.jsx",
-    "preview": "vite preview",
-    "vercel-build": "npm run build"
-  },
+"scripts": {
+  "dev": "node server.js", 
+  "build": "npm run build:client && npm run build:server",
+  "build:client": "vite build --outDir dist/client",
+  "build:server": "vite build --ssr src/entry-server.jsx --outDir dist/server",
+  "preview": "vite preview",
+  "vercel-build": "npm run build"
+},
   "dependencies": {
     "antd": "^5.27.0",
     "axios": "^1.11.0",
