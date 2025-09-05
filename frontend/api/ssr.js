@@ -7,7 +7,7 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Load index.html template
 const templateHtml = fs.readFileSync(
-  path.resolve(__dirname, "../dist/client/index.html"),
+  path.resolve(__dirname, "../index.html"),
   "utf-8"
 );
 
