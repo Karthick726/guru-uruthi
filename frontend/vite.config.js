@@ -18,11 +18,10 @@ export default defineConfig({
       "react-helmet-async",
 
       // Bootstrap + React Bootstrap deps
-      "bootstrap",
+      "bootstrap", "countup.js",
       "react-bootstrap",
       "dom-helpers",
       "react-transition-group",
-      "@restart/hooks",
 
       // Ant Design
       "antd",
