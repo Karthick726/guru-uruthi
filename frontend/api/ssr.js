@@ -1,4 +1,5 @@
 import fs from 'node:fs/promises'
+import path from "path"
 import express from 'express'
 
 // Constants
@@ -8,7 +9,11 @@ const base = '/'
 
 // Cached production assets
 const templateHtml = isProduction
-  ? await fs.readFile('./dist/client/index.html', 'utf-8')
+  ? fs.readFileSync(
+    path.resolve(__dirname, "../dist/client/index.html"),
+    "utf-8"
+  )
+
   : ''
 
 // Create http server
