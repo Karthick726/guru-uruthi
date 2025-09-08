@@ -80,7 +80,7 @@ export default async function handler(req, res) {
         ${helmet.meta?.toString() || ''}
         ${helmet.link?.toString() || ''}
         
-<link rel="stylesheet" href="./style.css">
+<link rel="stylesheet" href="/dist/client/style.css">
         `);
     
     // Use correct Vercel response methods
