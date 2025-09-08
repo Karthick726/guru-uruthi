@@ -4,7 +4,7 @@ import ssr from 'vite-plugin-ssr/plugin'
 
 export default defineConfig({
   plugins: [react()],
-   base: "./",
+   base: "/",
   build: {
     rollupOptions: {
       input: {
