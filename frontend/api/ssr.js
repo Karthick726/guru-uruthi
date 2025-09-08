@@ -1,78 +1,80 @@
-import fs from "fs";
-import path from "path";
-import express from "express";
+import fs from 'fs'
+import path from "path"
+import express from 'express'
 import { fileURLToPath } from "url";
 
+// Get __dirname in ESM
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
-// Production constants
-const isProduction = true;
-const base = "/";
+// Constants
+const isProduction =  'production'
+const port =  5173
+const base = '/'
 
-// Cached production index.html
-const templateHtml = fs.readFileSync(
-  path.resolve(__dirname, "../dist/client/index.html"),
-  "utf-8"
-);
+// Cached production assets
+const templateHtml = isProduction
+  ? fs.readFileSync(
+    path.resolve(__dirname, "../dist/client/index.html"),
+    "utf-8"
+  )
 
-// Create Express app
-const app = express();
+  : ''
 
-// Serve static assets (CSS/JS from dist/client)
-app.use(base, express.static(path.resolve(__dirname, "../dist/client"), {
-  extensions: []
-}));
+// Create http server
+const app = express()
 
-// SSR handler
-app.use("*", async (req, res) => {
+// Add Vite or respective production middlewares
+/** @type {import('vite').ViteDevServer | undefined} */
+let vite
+if (!isProduction) {
+  const { createServer } = await import('vite')
+  vite = await createServer({
+    server: { middlewareMode: true },
+    appType: 'custom',
+    base,
+  })
+  app.use(vite.middlewares)
+} else {
+  const compression = (await import('compression')).default
+  const sirv = (await import('sirv')).default
+  app.use(compression())
+  app.use(base, sirv('./dist/client', { extensions: [] }))
+}
+
+// Serve HTML
+app.use('*all', async (req, res) => {
   try {
-    const url = req.originalUrl.replace(base, "");
+    const url = req.originalUrl.replace(base, '')
 
-    // Import prebuilt server bundle
-    const { render } = await import(
-      path.resolve(__dirname, "../dist/server/entry-server.js")
-    );
-
-    // Render app
-    const rendered = await render(url);
-
-    // Normalize output
-    let html = "";
-    let helmet = { title: { toString: () => "" }, meta: { toString: () => "" }, link: { toString: () => "" } };
-
-    if (typeof rendered === "string") {
-      html = rendered;
-    } else if (rendered && typeof rendered === "object") {
-      html = rendered.html ?? "";
-      helmet = rendered.helmet ?? helmet;
+    /** @type {string} */
+    let template
+    /** @type {import('./src/entry-server.js').render} */
+    let render
+    if (!isProduction) {
+      // Always read fresh template in development
+      template = await fs.readFile('./index.html', 'utf-8')
+      template = await vite.transformIndexHtml(url, template)
+      render = (await vite.ssrLoadModule('/src/entry-server.jsx')).render
+    } else {
+      template = templateHtml
+      render = (await import('./dist/server/entry-server.js')).render
     }
 
-    // Inject SSR + Helmet into template
-    const finalHtml = templateHtml
-      .replace("<!--helmet-outlet-->", `
-        ${helmet.title?.toString() || ""}
-        ${helmet.meta?.toString() || ""}
-        ${helmet.link?.toString() || ""}
-      `)
-      .replace("<!--ssr-outlet-->", html);
+    const rendered = await render(url)
 
-    res.status(200).setHeader("Content-Type", "text/html").end(finalHtml);
+    const html = template
+      .replace(` <!--helmet-outlet-->`, rendered.head ?? '')
+      .replace(`<!--ssr-outlet-->`, rendered.html ?? '')
 
+    res.status(200).set({ 'Content-Type': 'text/html' }).send(html)
   } catch (e) {
-    console.error("SSR Error:", e);
-    res.status(500).setHeader("Content-Type", "text/html").end(`
-      <!DOCTYPE html>
-      <html>
-        <head><title>Server Error</title></head>
-        <body>
-          <h1>SSR Error</h1>
-          <p>${e.message}</p>
-          <pre>${e.stack}</pre>
-        </body>
-      </html>
-    `);
+    vite?.ssrFixStacktrace(e)
+    console.log(e.stack)
+    res.status(500).end(e.stack)
   }
-});
+})
 
-// Export for Vercel
-export default app;
+// Start http server
+app.listen(port, () => {
+  console.log(`Server started at http://localhost:${port}`)
+})
