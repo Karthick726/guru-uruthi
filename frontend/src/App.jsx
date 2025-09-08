@@ -50,7 +50,7 @@ function App() {
             <Route path="/testimonial" element={<Testimonial />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/bulk-orders" element={<LandingPage />} />
-            <Route path="*" element={<NotFound />} />
+          
           </Routes>
         </Suspense>
       </AppProvider>
