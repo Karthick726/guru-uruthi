@@ -60,7 +60,8 @@ export default async function handler(req, res) {
     // Handle different return formats
     let html, helmet;
     if (typeof renderResult === 'string') {
-      html = renderResult;
+      html = `${renderResult}
+                <link rel="stylesheet" href="../dist/client/assets/client-DAtw3qON.css">`;
       helmet = { title: { toString: () => '' }, meta: { toString: () => '' }, link: { toString: () => '' } };
     } else if (renderResult && typeof renderResult === 'object') {
       html = renderResult.html || '';
