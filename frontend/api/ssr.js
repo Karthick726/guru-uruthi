@@ -1,39 +1,45 @@
-// api/ssr.js
-import { createServer as createViteServer } from "vite";
-import fs from "fs";
-import path from "path";
-import { fileURLToPath } from "url";
+import express from 'express';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
-let vite;
+const resolve = (p) => path.resolve(__dirname, p);
 
-export default async function handler(req, res) {
-  if (!vite) {
-    vite = await createViteServer({
-      server: { middlewareMode: true },
-      appType: "custom"
-    });
-  }
+async function createServer() {
+  const app = express();
 
-  try {
-    const url = req.url;
-    let template = fs.readFileSync(path.resolve(__dirname, "../index.html"), "utf-8");
-    template = await vite.transformIndexHtml(url, template);
+  // serve static client build
+  app.use(express.static(resolve('dist/client')));
 
-    const { render } = await vite.ssrLoadModule("/src/entry-server.jsx");
-    const { html, helmet } = await render(url);
+  // load SSR entry (already built)
+  const { render } = await import(`./dist/server/entry-server.js`);
 
-    const responseHtml = template
-      .replace("<!--ssr-outlet-->", html)
-      .replace("<!--helmet-outlet-->", `
-        ${helmet.title.toString()}
-        ${helmet.meta.toString()}
-        ${helmet.link.toString()}
-      `);
+  app.use('*', async (req, res) => {
+    try {
+      let template = fs.readFileSync(
+        resolve('dist/client/index.html'),
+        'utf-8'
+      );
 
-    res.status(200).setHeader("Content-Type", "text/html").end(responseHtml);
-  } catch (e) {
-    vite.ssrFixStacktrace(e);
-    res.status(500).end(e.message);
-  }
+      const { html, helmet } = await render(req.originalUrl);
+
+      const responseHtml = template
+        .replace('<!--ssr-outlet-->', html)
+        .replace('<!--helmet-outlet-->', `
+          ${helmet.title.toString()}
+          ${helmet.meta.toString()}
+          ${helmet.link.toString()}
+        `);
+
+      res.status(200).set({ 'Content-Type': 'text/html' }).end(responseHtml);
+    } catch (e) {
+      console.error(e);
+      res.status(500).end(e.message);
+    }
+  });
+
+  return app;
 }
+
+export default createServer;
