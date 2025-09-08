@@ -1,6 +1,10 @@
 import fs from 'node:fs/promises'
 import path from "path"
 import express from 'express'
+import { fileURLToPath } from "url";
+
+// Get __dirname in ESM
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Constants
 const isProduction =  'production'
