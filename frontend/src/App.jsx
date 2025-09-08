@@ -41,7 +41,6 @@ function App() {
         />
         <ScrollTop />
         <ScrollBar />
-        <Suspense fallback={<Spinner />}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -52,7 +51,6 @@ function App() {
             <Route path="/bulk-orders" element={<LandingPage />} />
           
           </Routes>
-        </Suspense>
       </AppProvider>
     </div>
   );
