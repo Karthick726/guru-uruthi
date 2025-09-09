@@ -24,7 +24,8 @@ const corsOptions = {
     "http://localhost:3000",
     "http://localhost:5174",
     "https://guru-uruthi-frontend.vercel.app",
-    "https://guru-uruthi-admin.vercel.app"
+    "https://guru-uruthi-admin.vercel.app",
+    "https://guru-vite.vercel.app"
 
   ],
 
